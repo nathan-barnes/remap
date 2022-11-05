@@ -1,0 +1,9 @@
+#run python install ir requirements.txt
+
+json
+flask
+ghhops_server
+open3d
+time
+copy
+numpy
