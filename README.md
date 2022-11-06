@@ -19,11 +19,17 @@ reference library: [open3D](http://www.open3d.org/)
 
 
 
+
 # INSTALL
 
 WINDOWS
 
-python`pip install open3d`
+python
+
+clone project
+
+cd into root folder
+
 `python install -r requirements.txt`
 
 in Rhino package manager install `hops`
