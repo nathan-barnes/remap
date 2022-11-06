@@ -5,6 +5,8 @@
 
 ![pointcloud](https://github.com/nathan-barnes/atom2bits2atoms/blob/main/resource/scanofteam.gif)
 
+![grasshopperConnection](https://github.com/nathan-barnes/atom2bits2atoms/blob/main/resource/grasshopper-kinect-open3d.gif)
+
  
  
 # Components/References: 
