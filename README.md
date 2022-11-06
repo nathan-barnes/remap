@@ -17,6 +17,8 @@ Grasshopper: [AZURE KINECT GH (by Andrew Jinho Ahn)](https://www.food4rhino.com/
 
 reference library: [open3D](http://www.open3d.org/)
 
+additional: Flask for local server
+
 
 
 
@@ -24,7 +26,7 @@ reference library: [open3D](http://www.open3d.org/)
 
 WINDOWS
 
-python
+python (3.8 recomended)
 
 clone project
 
