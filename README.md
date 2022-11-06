@@ -7,7 +7,7 @@
 
  
  
-#Components/References: 
+# Components/References: 
 
 Hardware: [Azure Kinect dk](https://azure.microsoft.com/en-us/products/kinect-dk/)
 
