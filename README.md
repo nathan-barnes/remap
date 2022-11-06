@@ -7,7 +7,7 @@ Grasshopper: AZURE KINECT GH (by Andrew Jinho Ahn)
 open3D: python
 
 
-# Install
+
 
 
 
