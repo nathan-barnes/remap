@@ -1,5 +1,5 @@
-# atom2bits2atoms
- AECTech 2022 hackathon: atoms2bits2atoms | real-time point cloud alignment and directive
+# REMAP
+ AECTech 2022 hackathon: real-time point cloud alignment and directive
  Components: 
 
 Hardware: Azure Kinect dk {}
