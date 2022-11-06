@@ -207,24 +207,25 @@ def icpFeature(run,  OrientPtLst, PtToMatchList, threshold,  max_iteration):
 
 
 @hops.component(
-    "/icpMatch",
-    name="icpMatch",
+    "/icpMatchz",
+    name="icpMatchz",
     description="itterative closest point, send point cloud to align, returns transform",
     inputs=[
-        hs.HopsBoolean("run", "R", "run the component"),
+        hs.HopsBoolean("run", "Run", "run the component"),
         hs.HopsString("PtToMatch", "ptM", "Point cloud to match to"),
         hs.HopsString("PtToOrient", "ptO", "Point cloud to orient"),
         hs.HopsNumber("icp threshold", "icpTh", "ICP threshold"),
-        hs.HopsInteger("Voxel Size", "VS", "size of voxels for cleaning"),
+        hs.HopsInteger("Voxel Size", "VoxSz", "size of voxels for cleaning"),
+        hs.HopsInteger("num_iterationsVox", "numIterVx", "number itterations for ransac"),
     ],
     outputs=[
-        # hs.HopsString("fastTransMatrix", "fasTranMat", "output Fast transform to orient"),
+        hs.HopsString("fastTransMatrix", "fasTranMat", "output Fast transform to orient"),
         hs.HopsString("transMatrix", "TranMat", "output transform to orient"),
         hs.HopsString("result_ransac", "result_ransac", "result_ransac"),
     ]
 )
 
-def icpMatch(run,   PtToMatch, PtToOrient, threshold,  Voxel_Size): #need to add - voxel_size, threshold, options as avalue list?
+def icpMatchz(run,   PtToMatch, PtToOrient, threshold,  Voxel_Size, num_iterations): #need to add - voxel_size, threshold, options as avalue list?
 
     OrientPt = 'OrientPt.pcd'
     MatchPt = 'MatchPt.pcd'
@@ -250,29 +251,29 @@ def icpMatch(run,   PtToMatch, PtToOrient, threshold,  Voxel_Size): #need to add
         # ------------------------use for alignment -----------------------
     
         #Ransac looks for center alignements, gets heavy but more robust
-        # result_ransac = execute_global_registration(source_down, target_down,
-        #                                     source_fpfh, target_fpfh,
-        #                                     voxel_size, num_iterations)
+        result_ransac = execute_global_registration(source_down, target_down,
+                                            source_fpfh, target_fpfh,
+                                            Voxel_Size, num_iterations)
         # print('result_ransac',  len(result_ransac.correspondence_set), result_ransac)
 
 
         #ICP using fast transform
-        # reg_p2p = o3d.pipelines.registration.registration_icp(
-        #     source, target, threshold, result_ransac.transformation,
-        #     o3d.pipelines.registration.TransformationEstimationPointToPoint(),
-        #     # o3d.pipelines.registration.ICPConvergenceCriteria( max_iteration=500000)) #5000000 good but slow
-        #     o3d.pipelines.registration.ICPConvergenceCriteria( max_iteration)) #5000000 good but slow
+        reg_p2p = o3d.pipelines.registration.registration_icp(
+            source, target, threshold, result_ransac.transformation,
+            o3d.pipelines.registration.TransformationEstimationPointToPoint(),
+            # o3d.pipelines.registration.ICPConvergenceCriteria( max_iteration=500000)) #5000000 good but slow
+            o3d.pipelines.registration.ICPConvergenceCriteria( max_iteration=5000)) #5000000 good but slow
 
         # print('reg_p2preg_p2p, ', len(reg_p2p.correspondence_set), reg_p2p)    
 
 
         # ----- doesn't use fast transform
-        trans_init = np.eye(4)
+        # trans_init = np.eye(4)
 
-        reg_p2p = o3d.pipelines.registration.registration_icp( 
-            source, target, threshold, trans_init,
-            o3d.pipelines.registration.TransformationEstimationPointToPoint(),
-            o3d.pipelines.registration.ICPConvergenceCriteria(max_iteration=5000000))
+        # reg_p2p = o3d.pipelines.registration.registration_icp( 
+        #     source, target, threshold, trans_init,
+        #     o3d.pipelines.registration.TransformationEstimationPointToPoint(),
+        #     o3d.pipelines.registration.ICPConvergenceCriteria(max_iteration=5000000))
 
         
         print(reg_p2p)
@@ -285,8 +286,8 @@ def icpMatch(run,   PtToMatch, PtToOrient, threshold,  Voxel_Size): #need to add
         print("final registration took %.3f sec.\n" % (time.time() - start))
 
 
-        # return result_ransac.transformation.tolist(), reg_p2p.transformation.tolist(), len(reg_p2p.correspondence_set)
-        return  reg_p2p.transformation.tolist(), len(reg_p2p.correspondence_set)
+        return result_ransac.transformation.tolist(), reg_p2p.transformation.tolist(), len(reg_p2p.correspondence_set)
+        # return  reg_p2p.transformation.tolist(), len(reg_p2p.correspondence_set)
 
     else:
         return 'waiting'

@@ -99,7 +99,7 @@ def execute_fast_global_registration(source_down, target_down, source_fpfh,
 
 
 def execute_global_registration(source_down, target_down, source_fpfh,
-                                target_fpfh, voxel_size,  num_iterations=80000):#80000 .9999
+                                target_fpfh, voxel_size,  num_iterations=800):#80000 .9999
     distance_threshold = voxel_size * 2#1.5
     # distance_threshold=0.05
     ransac_n=3
@@ -115,7 +115,7 @@ def execute_global_registration(source_down, target_down, source_fpfh,
             # o3d.pipelines.registration.CorrespondenceCheckerBasedOnEdgeLength( .9),#.9
             o3d.pipelines.registration.CorrespondenceCheckerBasedOnDistance(distance_threshold)
         # ], o3d.pipelines.registration.RANSACConvergenceCriteria(100000, 0.999))
-        ], o3d.pipelines.registration.RANSACConvergenceCriteria(4000000, num_iterations))
+        ], o3d.pipelines.registration.RANSACConvergenceCriteria(40000, num_iterations))
     # result = o3d.pipelines.registration.registration_ransac_based_on_correspondence(
     #     source_down, target_down, source_fpfh, target_fpfh, True,
     #     0.05, #distance_threshold,
