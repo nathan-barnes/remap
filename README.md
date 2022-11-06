@@ -7,10 +7,10 @@
 
  
  
-Components: 
+#Components/References: 
 
 Hardware: [Azure Kinect dk](https://azure.microsoft.com/en-us/products/kinect-dk/)
-Grasshopper: AZURE KINECT GH (by Andrew Jinho Ahn)
+Grasshopper: [AZURE KINECT GH (by Andrew Jinho Ahn)](https://www.food4rhino.com/en/app/azure-kinect-gh)
 open3D:
 
 
@@ -21,7 +21,6 @@ WINDOWS
 python`pip install open3d`
 `python install -r requirements.txt`
 
+in Rhino package manager install `hops`
 
 
-
-# REFERENCES
