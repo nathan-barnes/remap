@@ -1,7 +1,7 @@
 # REMAP
  AECTech 2022 hackathon: real-time point cloud alignment and directive
  
- Team: James Coleman, Burcin Nalinci, Brian G, 
+ Team: James Coleman, Burcin Nalinci, Nathan Barnes, Brian Gillespie, Quoc Dang
  ![pointcloud](https://github.com/nathan-barnes/atom2bits2atoms/blob/main/resource/scanofteam.gif)
 
  
