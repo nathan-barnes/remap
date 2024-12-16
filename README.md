@@ -5,6 +5,8 @@
 
 ![pointcloud](https://github.com/nathan-barnes/atom2bits2atoms/blob/main/resource/scanofteam.gif)
 
+![grasshopperConnection](https://github.com/nathan-barnes/atom2bits2atoms/blob/main/resource/grasshopper-kinect-open3d.gif)
+
  
  
 # Components/References: 
@@ -15,13 +17,21 @@ Grasshopper: [AZURE KINECT GH (by Andrew Jinho Ahn)](https://www.food4rhino.com/
 
 reference library: [open3D](http://www.open3d.org/)
 
+additional: Flask for local server
+
+
 
 
 # INSTALL
 
 WINDOWS
 
-python`pip install open3d`
+python (3.8 recomended)
+
+clone project
+
+cd into root folder
+
 `python install -r requirements.txt`
 
 in Rhino package manager install `hops`
